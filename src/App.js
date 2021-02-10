@@ -14,7 +14,6 @@ const App = () => {
   }, [])
 
   const emailRouteMatch = useRouteMatch('/email/:id')
-
   const emailMatch = emailRouteMatch
     ? emailList.find((email) => email.id === emailRouteMatch.params.id)
     : null

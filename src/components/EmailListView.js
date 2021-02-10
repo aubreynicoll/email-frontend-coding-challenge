@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const EmailListView = ({ emailList }) => (
   <div>
@@ -18,5 +18,19 @@ const EmailListView = ({ emailList }) => (
     </ul>
   </div>
 )
+
+EmailListView.propTypes = {
+  emailList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      from: PropTypes.string.isRequired,
+      to: PropTypes.string.isRequired,
+      date: PropTypes.instanceOf(Date).isRequired,
+      hasAttachment: PropTypes.bool.isRequired,
+      subject: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+}
 
 export default EmailListView
