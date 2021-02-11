@@ -76,8 +76,12 @@ table {
     tr {
       background-color: rgb(245,	245,	245	);
       th {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         text-align: start;
+      }
+
+      th:hover {
+        color: royalblue;
       }
     }
   }
@@ -97,5 +101,21 @@ table {
         width: 1rem;
       }
     }
+  }
+}
+
+.SplashScreen-flex-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Footer-root {
+  text-align: right;
+
+  p {
+    margin: 1rem 2rem;
+    font-style: italic;
   }
 }

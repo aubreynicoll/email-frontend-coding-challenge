@@ -2,7 +2,9 @@ import React from 'react'
 
 const Footer = () => (
   <footer className="Footer-root">
-    <h2>Footer</h2>
+    <p>
+      HENNGE Coding Challenge, Aubrey Nicoll 2021
+    </p>
   </footer>
 )
 

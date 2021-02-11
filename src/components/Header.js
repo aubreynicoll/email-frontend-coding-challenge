@@ -10,11 +10,13 @@ const Header = ({
     <DatePicker
       value={startDate}
       onChange={handleStartDateChange}
+      format="MM/dd/yyyy"
     />
     <ArrowIcon />
     <DatePicker
       value={endDate}
       onChange={handleEndDateChange}
+      format="MM/dd/yyyy"
     />
     <div>
       Results:
