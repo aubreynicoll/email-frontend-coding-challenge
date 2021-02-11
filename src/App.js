@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
-import Container from 'react-bootstrap/Container'
 import {
   Header, Footer, EmailListView, EmailDetailView,
 } from './components'
@@ -20,7 +19,7 @@ const App = () => {
     : null
 
   return (
-    <Container className="App-root">
+    <div className="App-root">
       <Header nResults={emailList.length} />
       <main>
         <Switch>
@@ -33,7 +32,7 @@ const App = () => {
         </Switch>
       </main>
       <Footer />
-    </Container>
+    </div>
   )
 }
 
