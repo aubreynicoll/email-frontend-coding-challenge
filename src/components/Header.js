@@ -1,9 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { DatePicker } from '@material-ui/pickers'
+import { ReactComponent as ArrowIcon } from '../assets/icons/icon_arrow02.svg'
 
-const Header = ({ nResults }) => (
+const Header = ({
+  nResults, startDate, endDate, handleStartDateChange, handleEndDateChange,
+}) => (
   <header className="Header-root">
-    <h2>Header</h2>
+    <DatePicker
+      value={startDate}
+      onChange={handleStartDateChange}
+    />
+    <ArrowIcon />
+    <DatePicker
+      value={endDate}
+      onChange={handleEndDateChange}
+    />
     <div>
       Results:
       {' '}
@@ -16,6 +28,10 @@ const Header = ({ nResults }) => (
 
 Header.propTypes = {
   nResults: PropTypes.number.isRequired,
+  startDate: PropTypes.instanceOf(Date).isRequired,
+  endDate: PropTypes.instanceOf(Date).isRequired,
+  handleStartDateChange: PropTypes.func.isRequired,
+  handleEndDateChange: PropTypes.func.isRequired,
 }
 
 export default Header

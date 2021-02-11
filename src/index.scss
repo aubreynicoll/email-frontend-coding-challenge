@@ -8,12 +8,11 @@ $gray: rgb(102,	102,	102	);
 $light-gray: rgb(245,	245,	245	);
 
 html {
-  font-size: 62.5%;
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 1.6rem;
   color: $gray;
 }
 
@@ -26,6 +25,13 @@ body {
 table {
   table-layout: fixed;
   width: 100%;
+}
+
+.Header-root {
+  svg {
+    width: 1rem;
+    margin: 0 1rem;
+  }
 }
 
 .EmailListView-table {
@@ -70,7 +76,7 @@ table {
     tr {
       background-color: rgb(245,	245,	245	);
       th {
-        font-size: 1.4rem;
+        font-size: 0.8rem;
         text-align: start;
       }
     }
@@ -88,7 +94,7 @@ table {
 
     td {
       svg {
-        width: 1.6rem;
+        width: 1rem;
       }
     }
   }

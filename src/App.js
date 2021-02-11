@@ -7,11 +7,29 @@ import emailData from './emails.json'
 
 const App = () => {
   const [emailList, setEmailList] = useState([])
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+
+  const filteredEmails = emailList.filter((email) => (
+    startDate <= email.date && email.date <= endDate
+  ))
 
   useEffect(() => {
     const emails = emailData.map((email) => ({ ...email, date: new Date(email.date) }))
     setEmailList(emails)
+
+    const dates = emails.map((email) => email.date)
+    setStartDate(new Date(Math.min(...dates)))
+    setEndDate(new Date(Math.max(...dates)))
   }, [])
+
+  const handleStartDateChange = (dateTime) => {
+    setStartDate(new Date(dateTime))
+  }
+
+  const handleEndDateChange = (dateTime) => {
+    setEndDate(new Date(dateTime))
+  }
 
   const emailRouteMatch = useRouteMatch('/email/:id')
   const emailMatch = emailRouteMatch
@@ -20,14 +38,20 @@ const App = () => {
 
   return (
     <div className="App-root">
-      <Header nResults={emailList.length} />
+      <Header
+        nResults={filteredEmails.length}
+        startDate={startDate}
+        endDate={endDate}
+        handleStartDateChange={handleStartDateChange}
+        handleEndDateChange={handleEndDateChange}
+      />
       <main>
         <Switch>
           <Route path="/email/:id">
             <EmailDetailView email={emailMatch} />
           </Route>
           <Route path="/">
-            <EmailListView emailList={emailList} />
+            <EmailListView emailList={filteredEmails} />
           </Route>
         </Switch>
       </main>
