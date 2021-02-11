@@ -1,33 +1,94 @@
-@import "~bootstrap/scss/bootstrap";
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+$xxl: 1536px;
 
-.EmailListView-root {
-  .EmailListView-table {
-    table-layout: fixed;
-    cursor: pointer;
-  
-    .from-col {
-      width: 20% !important;
+$gray: rgb(102,	102,	102	);
+$light-gray: rgb(245,	245,	245	);
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+  color: $gray;
+}
+
+.App-root {
+  max-width: $xl;
+  margin: 0 auto;
+}
+
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.EmailListView-table {
+  $border-color: rgb(228,	228,	228	);
+
+  border-collapse: collapse;
+  cursor: pointer;
+
+  .from-col {
+    width: 20%;
+  }
+
+  .to-col {
+    width: 20%;
+  }
+
+  .subject-col {
+    width: 40%;
+  }
+
+  .attachment-col {
+    min-width: 5%;
+  }
+
+  .date-col {
+    width: 15%;
+  }
+
+  tr {
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+  }
+
+  th, td {
+    padding: 1rem 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  thead {
+    tr {
+      background-color: rgb(245,	245,	245	);
+      th {
+        font-size: 1.4rem;
+        text-align: start;
+      }
     }
+  }
 
-    .to-col {
-      width: 20% !important;
-    }
+  tbody {
+    tr:hover {
+      color: royalblue;
+      background-color: $light-gray;
 
-    .subject-col {
-      width: 45% !important;
-    }
-
-    .date-col {
-      width: 15% !important;
+      path {
+        fill: royalblue;
+      }
     }
 
     td {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-
-      img {
-        float: right;
+      svg {
+        width: 1.6rem;
       }
     }
   }
