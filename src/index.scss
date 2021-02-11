@@ -76,8 +76,12 @@ table {
     tr {
       background-color: rgb(245,	245,	245	);
       th {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         text-align: start;
+      }
+
+      th:hover {
+        color: royalblue;
       }
     }
   }
