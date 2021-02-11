@@ -1,21 +1,37 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+import Table from 'react-bootstrap/Table'
 import PropTypes from 'prop-types'
 
 const EmailListView = ({ emailList }) => (
   <div>
-    <h2>EmailListView</h2>
-    <ul>
-      {emailList.map((email) => (
-        <li key={email.id}>
-          <Link to={`/email/${email.id}`}>
-            {email.id}
-            {' :: '}
-            {email.date.toString()}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <div>
+      Results:
+      {' '}
+      {emailList.length}
+      {' '}
+      mail(s)
+    </div>
+    <Table striped bordered hover responsive size="sm">
+      <thead>
+        <tr>
+          <th>From:</th>
+          <th>To:</th>
+          <th>Subject:</th>
+          <th>Date:</th>
+        </tr>
+      </thead>
+      <tbody>
+        {emailList.map((email) => (
+          <tr key={email.id}>
+            <td>{email.from}</td>
+            <td>{email.to}</td>
+            <td>{email.subject}</td>
+            <td>{email.date.toDateString()}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
   </div>
 )
 

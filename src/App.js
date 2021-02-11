@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
+import Container from 'react-bootstrap/Container'
 import {
   Header, Footer, EmailListView, EmailDetailView,
 } from './components'
@@ -19,7 +20,7 @@ const App = () => {
     : null
 
   return (
-    <div>
+    <Container>
       <Header />
       <main>
         <Switch>
@@ -32,7 +33,7 @@ const App = () => {
         </Switch>
       </main>
       <Footer />
-    </div>
+    </Container>
   )
 }
 
