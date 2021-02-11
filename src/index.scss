@@ -1,0 +1,34 @@
+@import "~bootstrap/scss/bootstrap";
+
+.EmailListView-root {
+  .EmailListView-table {
+    table-layout: fixed;
+    cursor: pointer;
+  
+    .from-col {
+      width: 20% !important;
+    }
+
+    .to-col {
+      width: 20% !important;
+    }
+
+    .subject-col {
+      width: 45% !important;
+    }
+
+    .date-col {
+      width: 15% !important;
+    }
+
+    td {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      img {
+        float: right;
+      }
+    }
+  }
+}

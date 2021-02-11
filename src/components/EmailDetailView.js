@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const EmailDetailView = ({ email }) => (
-  <div>
+  <div className="EmailDetailView-root">
     <h2>{email.subject}</h2>
     <div>
       {email.date.toString()}

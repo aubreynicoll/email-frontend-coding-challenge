@@ -20,8 +20,8 @@ const App = () => {
     : null
 
   return (
-    <Container>
-      <Header />
+    <Container className="App-root">
+      <Header nResults={emailList.length} />
       <main>
         <Switch>
           <Route path="/email/:id">
