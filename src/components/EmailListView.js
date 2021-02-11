@@ -3,20 +3,24 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { ReactComponent as AttachmentIcon } from '../assets/icons/icon_clip.svg'
+import { SplashScreen } from '.'
+// import { ReactComponent as ArrowIcon } from '../assets/icons/icon_arrow01.svg'
 
 const EmailListView = ({ emailList }) => {
   const history = useHistory()
+
+  if (emailList.length === 0) return <SplashScreen />
 
   return (
     <div className="EmailListView-root">
       <table className="EmailListView-table">
         <thead>
           <tr>
-            <th className="from-col">From:</th>
-            <th className="to-col">To:</th>
-            <th className="subject-col">Subject:</th>
+            <th className="from-col">From</th>
+            <th className="to-col">To</th>
+            <th className="subject-col">Subject</th>
             <th className="attachment-col" />
-            <th className="date-col">Date:</th>
+            <th className="date-col">Date</th>
           </tr>
         </thead>
         <tbody>
