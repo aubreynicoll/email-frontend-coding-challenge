@@ -110,3 +110,12 @@ table {
   justify-content: center;
   align-items: center;
 }
+
+.Footer-root {
+  text-align: right;
+
+  p {
+    margin: 1rem 2rem;
+    font-style: italic;
+  }
+}

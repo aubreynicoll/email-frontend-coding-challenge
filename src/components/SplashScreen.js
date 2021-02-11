@@ -7,6 +7,7 @@ const SplashScreen = () => (
     <div className="SplashScreen-flex-container">
       <img src={logo} alt="" />
     </div>
+    <hr />
   </div>
 )
 
