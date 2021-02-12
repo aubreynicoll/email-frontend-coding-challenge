@@ -3,7 +3,7 @@ const formatDate = (date) => {
   const dateSplit = date.toString().split(' ')
 
   if (date > new Date(currentDate).setDate(new Date().getDate() - 1)) {
-    return dateSplit[4]
+    return dateSplit[4].slice(0, 5)
   }
 
   if (date.getFullYear() === currentDate.getFullYear()) {
