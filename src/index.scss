@@ -78,6 +78,16 @@ table {
       th {
         font-size: 0.9rem;
         text-align: start;
+
+        .th-flex-container {
+          display: flex;
+
+          svg {
+            width: 8px;
+            margin: 0 5px;
+            align-items: center;
+          }
+        }
       }
 
       th:hover {

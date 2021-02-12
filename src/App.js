@@ -35,7 +35,6 @@ const App = () => {
     setEndDate(new Date(dateTime))
   }
 
-  // eslint-disable-next-line no-unused-vars
   const handleSortKeyChange = (key) => {
     if (key === sortKey.key) {
       setSortKey({
@@ -72,6 +71,7 @@ const App = () => {
           <Route path="/">
             <EmailListView
               emailList={filteredEmails}
+              sortKey={sortKey}
               handleSortKeyChange={handleSortKeyChange}
             />
           </Route>
