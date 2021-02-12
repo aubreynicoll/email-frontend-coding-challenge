@@ -12,14 +12,11 @@ const App = () => {
   const [endDate, setEndDate] = useState(new Date())
   const [sortKey, setSortKey] = useState({ key: 'date', isAscending: false })
 
-  const filteredEmails = emailList
-    .filter((email) => (
-      startDate <= email.date && email.date <= endDate
-    ))
-    .sort(getSortAlgorithm(sortKey))
-
   useEffect(() => {
-    const emails = emailData.map((email) => ({ ...email, date: new Date(email.date) }))
+    const emails = emailData.map((email) => ({
+      ...email,
+      date: new Date(email.date),
+    }))
     setEmailList(emails)
 
     const dates = emails.map((email) => email.date)
@@ -50,6 +47,12 @@ const App = () => {
   const emailMatch = emailRouteMatch
     ? emailList.find((email) => email.id === emailRouteMatch.params.id)
     : null
+
+  const filteredEmails = emailList
+    .filter((email) => (
+      startDate <= email.date && email.date < new Date(new Date().setDate(endDate.getDate() + 1))
+    ))
+    .sort(getSortAlgorithm(sortKey))
 
   return (
     <div className="App-root">
