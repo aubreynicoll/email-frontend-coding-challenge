@@ -36,6 +36,7 @@ const App = () => {
     const inputSplit = value.split(' ')
     const date1 = new Date(inputSplit[0])
     const date2 = new Date(inputSplit[2])
+    date2.setDate(date2.getDate() + 1)
     setStartDate(date1)
     setEndDate(date2)
   }
@@ -61,7 +62,7 @@ const App = () => {
 
   const filteredEmails = emailList
     .filter((email) => (
-      startDate <= email.date && email.date < new Date(new Date().setDate(endDate.getDate() + 1))
+      startDate <= email.date && email.date < endDate
     ))
     .sort(getSortAlgorithm(sortKey))
 
