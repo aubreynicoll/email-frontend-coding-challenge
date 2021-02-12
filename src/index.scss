@@ -49,7 +49,7 @@ table {
   }
 
   .subject-col {
-    width: 40%;
+    width: 45%;
   }
 
   .attachment-col {
@@ -57,7 +57,7 @@ table {
   }
 
   .date-col {
-    width: 15%;
+    width: 10%;
   }
 
   tr {
@@ -91,7 +91,7 @@ table {
       }
 
       th:hover {
-        color: royalblue;
+        color: royalblue !important;
       }
     }
   }

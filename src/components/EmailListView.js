@@ -22,8 +22,17 @@ const EmailListView = ({ emailList, sortKey, handleSortKeyChange }) => {
     return { display: 'none' }
   }
 
-  if (emailList.length === 0) return <SplashScreen />
+  const getSortColStyle = (col) => {
+    if (col === sortKey.key) {
+      return {
+        color: 'rgb(51,51,51)',
+        fontWeight: 'bold',
+      }
+    }
+    return {}
+  }
 
+  if (emailList.length === 0) return <SplashScreen />
   return (
     <div className="EmailListView-root">
       <table className="EmailListView-table">
@@ -31,6 +40,7 @@ const EmailListView = ({ emailList, sortKey, handleSortKeyChange }) => {
           <tr>
             <th
               className="from-col"
+              style={getSortColStyle('from')}
               onClick={() => handleSortKeyChange('from')}
             >
               <div className="th-flex-container">
@@ -40,6 +50,7 @@ const EmailListView = ({ emailList, sortKey, handleSortKeyChange }) => {
             </th>
             <th
               className="to-col"
+              style={getSortColStyle('to')}
               onClick={() => handleSortKeyChange('to')}
             >
               <div className="th-flex-container">
@@ -49,6 +60,7 @@ const EmailListView = ({ emailList, sortKey, handleSortKeyChange }) => {
             </th>
             <th
               className="subject-col"
+              style={getSortColStyle('subject')}
               onClick={() => handleSortKeyChange('subject')}
             >
               <div className="th-flex-container">
@@ -59,6 +71,7 @@ const EmailListView = ({ emailList, sortKey, handleSortKeyChange }) => {
             <th className="attachment-col" />
             <th
               className="date-col"
+              style={getSortColStyle('date')}
               onClick={() => handleSortKeyChange('date')}
             >
               <div className="th-flex-container">
@@ -71,11 +84,11 @@ const EmailListView = ({ emailList, sortKey, handleSortKeyChange }) => {
         <tbody>
           {emailList.map((email) => (
             <tr key={email.id} onClick={() => history.push(`/email/${email.id}`)}>
-              <td>{email.from}</td>
-              <td>{email.to}</td>
-              <td>{email.subject}</td>
+              <td style={getSortColStyle('from')}>{email.from}</td>
+              <td style={getSortColStyle('to')}>{email.to}</td>
+              <td style={getSortColStyle('subject')}>{email.subject}</td>
               <td>{email.hasAttachment && <AttachmentIcon />}</td>
-              <td>{formatDate(email.date)}</td>
+              <td style={getSortColStyle('date')}>{formatDate(email.date)}</td>
             </tr>
           ))}
         </tbody>
