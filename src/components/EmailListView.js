@@ -3,7 +3,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { ReactComponent as AttachmentIcon } from '../assets/icons/icon_clip.svg'
-import { SplashScreen } from '.'
+import SplashScreen from './SplashScreen'
 // import { ReactComponent as ArrowIcon } from '../assets/icons/icon_arrow01.svg'
 
 const EmailListView = ({ emailList }) => {
