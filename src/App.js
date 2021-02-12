@@ -12,27 +12,32 @@ const App = () => {
   const [endDate, setEndDate] = useState(new Date())
   const [sortKey, setSortKey] = useState({ key: 'date', isAscending: false })
 
-  const filteredEmails = emailList
-    .filter((email) => (
-      startDate <= email.date && email.date <= endDate
-    ))
-    .sort(getSortAlgorithm(sortKey))
-
-  useEffect(() => {
-    const emails = emailData.map((email) => ({ ...email, date: new Date(email.date) }))
-    setEmailList(emails)
-
-    const dates = emails.map((email) => email.date)
+  const initializeDateRange = () => {
+    const dates = emailData.map((email) => new Date(email.date))
     setStartDate(new Date(Math.min(...dates)))
     setEndDate(new Date(Math.max(...dates)))
-  }, [])
-
-  const handleStartDateChange = (dateTime) => {
-    setStartDate(new Date(dateTime))
   }
 
-  const handleEndDateChange = (dateTime) => {
-    setEndDate(new Date(dateTime))
+  useEffect(() => {
+    const emails = emailData.map((email) => ({
+      ...email,
+      date: new Date(email.date),
+    }))
+    setEmailList(emails)
+
+    initializeDateRange()
+  }, [])
+
+  const handleDateRangeChange = (value) => {
+    if (!value) {
+      initializeDateRange()
+      return
+    }
+    const inputSplit = value.split(' ')
+    const date1 = new Date(inputSplit[0])
+    const date2 = new Date(inputSplit[2])
+    setStartDate(date1)
+    setEndDate(date2)
   }
 
   const handleSortKeyChange = (key) => {
@@ -54,14 +59,19 @@ const App = () => {
     ? emailList.find((email) => email.id === emailRouteMatch.params.id)
     : null
 
+  const filteredEmails = emailList
+    .filter((email) => (
+      startDate <= email.date && email.date < new Date(new Date().setDate(endDate.getDate() + 1))
+    ))
+    .sort(getSortAlgorithm(sortKey))
+
   return (
     <div className="App-root">
       <Header
         nResults={filteredEmails.length}
         startDate={startDate}
         endDate={endDate}
-        handleStartDateChange={handleStartDateChange}
-        handleEndDateChange={handleEndDateChange}
+        handleDateRangeChange={handleDateRangeChange}
       />
       <main>
         <Switch>
