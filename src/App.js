@@ -12,6 +12,12 @@ const App = () => {
   const [endDate, setEndDate] = useState(new Date())
   const [sortKey, setSortKey] = useState({ key: 'date', isAscending: false })
 
+  const initializeDateRange = () => {
+    const dates = emailData.map((email) => new Date(email.date))
+    setStartDate(new Date(Math.min(...dates)))
+    setEndDate(new Date(Math.max(...dates)))
+  }
+
   useEffect(() => {
     const emails = emailData.map((email) => ({
       ...email,
@@ -19,12 +25,17 @@ const App = () => {
     }))
     setEmailList(emails)
 
-    const dates = emails.map((email) => email.date)
-    setStartDate(new Date(Math.min(...dates)))
-    setEndDate(new Date(Math.max(...dates)))
+    initializeDateRange()
   }, [])
 
-  const handleDateRangeChange = ([date1, date2]) => {
+  const handleDateRangeChange = (value) => {
+    if (!value) {
+      initializeDateRange()
+      return
+    }
+    const inputSplit = value.split(' ')
+    const date1 = new Date(inputSplit[0])
+    const date2 = new Date(inputSplit[2])
     setStartDate(date1)
     setEndDate(date2)
   }

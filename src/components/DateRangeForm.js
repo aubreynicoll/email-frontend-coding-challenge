@@ -6,10 +6,7 @@ import searchIcon from '../assets/icons/icon_search.svg'
 const DateRangeForm = ({ handleDateRangeChange }) => {
   const onSubmit = (event) => {
     event.preventDefault()
-    const inputSplit = event.target.dateRange.value.split(' ')
-    const date1 = new Date(inputSplit[0])
-    const date2 = new Date(inputSplit[2])
-    handleDateRangeChange([date1, date2])
+    handleDateRangeChange(event.target.dateRange.value)
   }
 
   return (
