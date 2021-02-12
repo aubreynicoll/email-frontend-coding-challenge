@@ -48,6 +48,7 @@ const EmailListView = ({ emailList, sortKey, handleSortKeyChange }) => {
                 <ArrowIcon style={getSortArrowStyle('from')} />
               </div>
             </th>
+
             <th
               className="to-col"
               style={getSortColStyle('to')}
@@ -58,6 +59,7 @@ const EmailListView = ({ emailList, sortKey, handleSortKeyChange }) => {
                 <ArrowIcon style={getSortArrowStyle('to')} />
               </div>
             </th>
+
             <th
               className="subject-col"
               style={getSortColStyle('subject')}
@@ -68,6 +70,7 @@ const EmailListView = ({ emailList, sortKey, handleSortKeyChange }) => {
                 <ArrowIcon style={getSortArrowStyle('subject')} />
               </div>
             </th>
+
             <th className="attachment-col" />
             <th
               className="date-col"
