@@ -4,15 +4,19 @@ import {
   Header, Footer, EmailListView, EmailDetailView,
 } from './components'
 import emailData from './emails.json'
+import { getSortAlgorithm } from './utils'
 
 const App = () => {
   const [emailList, setEmailList] = useState([])
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
+  const [sortKey, setSortKey] = useState({ key: 'date', isAscending: false })
 
-  const filteredEmails = emailList.filter((email) => (
-    startDate <= email.date && email.date <= endDate
-  ))
+  const filteredEmails = emailList
+    .filter((email) => (
+      startDate <= email.date && email.date <= endDate
+    ))
+    .sort(getSortAlgorithm(sortKey))
 
   useEffect(() => {
     const emails = emailData.map((email) => ({ ...email, date: new Date(email.date) }))
@@ -29,6 +33,21 @@ const App = () => {
 
   const handleEndDateChange = (dateTime) => {
     setEndDate(new Date(dateTime))
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  const handleSortKeyChange = (key) => {
+    if (key === sortKey.key) {
+      setSortKey({
+        ...sortKey,
+        isAscending: !sortKey.isAscending,
+      })
+    } else {
+      setSortKey({
+        key,
+        isAscending: key !== 'date',
+      })
+    }
   }
 
   const emailRouteMatch = useRouteMatch('/email/:id')
@@ -51,7 +70,10 @@ const App = () => {
             <EmailDetailView email={emailMatch} />
           </Route>
           <Route path="/">
-            <EmailListView emailList={filteredEmails} />
+            <EmailListView
+              emailList={filteredEmails}
+              handleSortKeyChange={handleSortKeyChange}
+            />
           </Route>
         </Switch>
       </main>

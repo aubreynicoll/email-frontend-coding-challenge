@@ -7,7 +7,7 @@ import formatDate from '../utils/formatDate'
 import SplashScreen from './SplashScreen'
 // import { ReactComponent as ArrowIcon } from '../assets/icons/icon_arrow01.svg'
 
-const EmailListView = ({ emailList }) => {
+const EmailListView = ({ emailList, handleSortKeyChange }) => {
   const history = useHistory()
 
   if (emailList.length === 0) return <SplashScreen />
@@ -17,11 +17,31 @@ const EmailListView = ({ emailList }) => {
       <table className="EmailListView-table">
         <thead>
           <tr>
-            <th className="from-col">From</th>
-            <th className="to-col">To</th>
-            <th className="subject-col">Subject</th>
+            <th
+              className="from-col"
+              onClick={() => handleSortKeyChange('from')}
+            >
+              From
+            </th>
+            <th
+              className="to-col"
+              onClick={() => handleSortKeyChange('to')}
+            >
+              To
+            </th>
+            <th
+              className="subject-col"
+              onClick={() => handleSortKeyChange('subject')}
+            >
+              Subject
+            </th>
             <th className="attachment-col" />
-            <th className="date-col">Date</th>
+            <th
+              className="date-col"
+              onClick={() => handleSortKeyChange('date')}
+            >
+              Date
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -52,6 +72,7 @@ EmailListView.propTypes = {
       body: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  handleSortKeyChange: PropTypes.func.isRequired,
 }
 
 export default EmailListView
