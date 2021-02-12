@@ -27,12 +27,9 @@ const App = () => {
     setEndDate(new Date(Math.max(...dates)))
   }, [])
 
-  const handleStartDateChange = (dateTime) => {
-    setStartDate(new Date(dateTime))
-  }
-
-  const handleEndDateChange = (dateTime) => {
-    setEndDate(new Date(dateTime))
+  const handleDateRangeChange = ([date1, date2]) => {
+    setStartDate(date1)
+    setEndDate(date2)
   }
 
   const handleSortKeyChange = (key) => {
@@ -60,8 +57,7 @@ const App = () => {
         nResults={filteredEmails.length}
         startDate={startDate}
         endDate={endDate}
-        handleStartDateChange={handleStartDateChange}
-        handleEndDateChange={handleEndDateChange}
+        handleDateRangeChange={handleDateRangeChange}
       />
       <main>
         <Switch>
