@@ -217,6 +217,7 @@ table {
   padding: 10px;
   border-bottom: 1px solid $border-color;  
   width: 100%;
+  cursor: pointer;
 
   .text {
     white-space: nowrap;
@@ -271,6 +272,15 @@ table {
 
   .EmailSubject-div {
     margin: 0 1rem;
+  }
+}
+
+.ListCard-root:hover {
+  color: royalblue;
+  background-color:$light-gray;
+
+  path {
+    fill: royalblue;
   }
 }
 

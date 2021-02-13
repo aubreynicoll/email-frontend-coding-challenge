@@ -54,7 +54,7 @@ const MobileEmailList = ({
 
       <div className="MobileEmailList-body">
         {emailList.map((email) => (
-          <div className="ListCard-root">
+          <div key={email.id} className="ListCard-root" onClick={() => history.push(`/email/${email.id}`)}>
             <div className="MailIcon-row-container">
 
               <div className="MailIcon-div">
@@ -64,13 +64,13 @@ const MobileEmailList = ({
               <div className="EmailAddresses-col-container">
                 <div className="EmailFrom-row-container">
 
-                  <div className="EmailFrom-div text email">
+                  <div className="EmailFrom-div text email" style={getSortColStyle('from')}>
                     {email.from}
                   </div>
 
                   <div className="Date-row-container">
                     <AttachmentIcon width="16" />
-                    <div className="Date-div">
+                    <div className="Date-div" style={getSortColStyle('date')}>
                       {formatDate(email.date)}
                     </div>
                     <ArrowIcon02 width="4" />
@@ -78,14 +78,14 @@ const MobileEmailList = ({
 
                 </div>
 
-                <div className="EmailTo-div text email">
+                <div className="EmailTo-div text email" style={getSortColStyle('to')}>
                   {email.to}
                 </div>
               </div>
 
             </div>
 
-            <div className="EmailSubject-div text subject">
+            <div className="EmailSubject-div text subject" style={getSortColStyle('subject')}>
               {email.subject}
             </div>
           </div>
