@@ -154,6 +154,31 @@ table {
   align-items: center;
 }
 
+.EmailDetailView-root {
+  svg {
+    width: 20px;
+  }
+
+  .EmailDetailView-flex-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  
+
+    .EmailDetailView-flex-col {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      * {
+        margin: 7px 0;
+      }
+    }
+  }
+}
+
 .Footer-root {
   text-align: right;
 

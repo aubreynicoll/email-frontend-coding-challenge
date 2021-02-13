@@ -62,7 +62,7 @@ const App = () => {
 
   const filteredEmails = emailList
     .filter((email) => (
-      startDate <= email.date && email.date < endDate
+      startDate <= email.date && email.date <= endDate
     ))
     .sort(getSortAlgorithm(sortKey))
 
