@@ -7,11 +7,9 @@ import formatDate from '../utils/formatDate'
 import SplashScreen from './SplashScreen'
 import { ReactComponent as ArrowIcon } from '../assets/icons/icon_arrow01.svg'
 
-// eslint-disable-next-line no-unused-vars
 const EmailListView = ({ emailList, sortKey, handleSortKeyChange }) => {
   const history = useHistory()
 
-  // eslint-disable-next-line no-unused-vars
   const getSortArrowStyle = (col) => {
     if (col === sortKey.key) {
       return {

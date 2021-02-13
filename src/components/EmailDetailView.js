@@ -1,15 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { ReactComponent as MailIcon } from '../assets/icons/icon_mail_sp.svg'
 
 const EmailDetailView = ({ email }) => (
   <div className="EmailDetailView-root">
+    <hr />
     <h2>{email.subject}</h2>
-    <div>
-      {email.date.toString()}
+    <div className="EmailDetailView-flex-row">
+      <MailIcon />
+      <div className="EmailDetailView-flex-col">
+        <span>{email.from}</span>
+        <span>{email.to}</span>
+      </div>
     </div>
+    <p>
+      {email.date.toString()}
+    </p>
     <p>
       {email.body}
     </p>
+    <hr />
   </div>
 )
 
