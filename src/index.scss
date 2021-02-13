@@ -6,6 +6,7 @@ $xxl: 1536px;
 
 $gray: rgb(102,	102,	102	);
 $light-gray: rgb(245,	245,	245	);
+$border-color: rgb(228,	228,	228	);
 
 html {
   box-sizing: border-box;
@@ -42,8 +43,6 @@ table {
 
     width: 360px;
 
-
-
     .DateRangeForm-input {
       width: 240px;
       height: 48px;
@@ -67,9 +66,7 @@ table {
   }
 }
 
-.EmailListView-table {
-  $border-color: rgb(228,	228,	228	);
-
+.DesktopEmailList-table {
   border-collapse: collapse;
   cursor: pointer;
 
@@ -107,7 +104,7 @@ table {
 
   thead {
     tr {
-      background-color: rgb(245,	245,	245	);
+      background-color: $light-gray;
       th {
         font-size: 0.9rem;
         text-align: start;
@@ -143,6 +140,34 @@ table {
       svg {
         width: 1rem;
       }
+    }
+  }
+}
+
+.MobileEmailList-root {
+  .MobileEmailList-sortBar {
+    display: flex;
+    font-size: 0.9rem;
+    font-weight: bold;
+    background-color: $light-gray;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    padding: 1rem 1rem;
+
+    * {
+      margin: 0 5px;
+      display: flex;
+
+      svg {
+        width: 8px;
+        margin: 0 1px;
+        align-items: center;
+      }
+    }
+
+    *:hover {
+      color: royalblue !important;
+      cursor: pointer;
     }
   }
 }
@@ -185,5 +210,88 @@ table {
   p {
     margin: 1rem 2rem;
     font-style: italic;
+  }
+}
+
+.ListCard-root {
+  padding: 10px;
+  border-bottom: 1px solid $border-color;  
+  width: 100%;
+  cursor: pointer;
+
+  .text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .email {
+    max-width: 200px;
+  }
+
+  .subject {
+    max-width: 400px;
+  }
+  
+
+  .MailIcon-row-container {
+    display: flex;
+    margin: 0 1rem;
+    
+
+    .MailIcon-div {
+      margin-right: 0.5rem;
+    }
+
+    .EmailAddresses-col-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+
+
+      .EmailFrom-row-container {
+        display: flex;
+        justify-content: space-between;
+
+        .EmailFrom-div {
+          content: '';
+        }
+
+        .Date-row-container {
+          display: flex;
+
+
+          * {
+            margin: 0 4px;
+          }
+        }
+      }
+    }
+  }
+
+  .EmailSubject-div {
+    margin: 0 1rem;
+  }
+}
+
+.ListCard-root:hover {
+  color: royalblue;
+  background-color:$light-gray;
+
+  path {
+    fill: royalblue;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .DesktopDisplay {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .MobileDisplay {
+    display: none;
   }
 }
